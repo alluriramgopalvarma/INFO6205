@@ -25,7 +25,6 @@ public class InsertionSortTest {
         list.add(2);
         list.add(3);
         list.add(4);
-
         Integer[] xs = list.toArray(new Integer[0]);
         final Config config = ConfigTest.setupConfig("true", "0", "1", "", "");
         Helper<Integer> helper = HelperFactory.create("InsertionSort", list.size(), config);
@@ -63,10 +62,6 @@ public class InsertionSortTest {
     @Test
     public void testMutatingInsertionSort() throws IOException {
         final List<Integer> list = new ArrayList<>();
-        for(int i=100000;i>0;i--)
-        {
-            list.add(i);
-        }
         list.add(3);
         list.add(4);
         list.add(2);
