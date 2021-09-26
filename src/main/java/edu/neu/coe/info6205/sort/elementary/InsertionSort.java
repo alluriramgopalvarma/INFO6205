@@ -88,9 +88,6 @@ public class InsertionSort<X extends Comparable<X>> extends SortWithHelper<X> {
             }
         }
 
-
-
-
     }
 
 
@@ -113,14 +110,12 @@ public class InsertionSort<X extends Comparable<X>> extends SortWithHelper<X> {
             final Supplier<Integer[]> intsSupplierOrdered = () -> {
                 Integer [] result = (Integer[]) Array.newInstance(Integer.class, n);
                 for (int i = 0; i < n; i++) result[i] = i*100;
-              // for (int i:result) System.out.print(i+" ");
                 return result;
             };
 
             final Supplier<Integer[]> intsSupplierReversed = () -> {
                 Integer [] result2 = (Integer[]) Array.newInstance(Integer.class, n);
                 for (int i = 0; i < n; i++) result2[i] = (n-i)*100;
-                //for (int i:result) System.out.print(i+" ");
                 return result2;
             };
 
@@ -128,14 +123,12 @@ public class InsertionSort<X extends Comparable<X>> extends SortWithHelper<X> {
                 Integer [] result3 = (Integer[]) Array.newInstance(Integer.class, n);
                 for (int i = 0; i < n/2; i++) result3[i]=i*100 ;
                 for(int i=(n/2);i<n;i++) result3[i]=n-i*100 ;
-               // for (int i:result) System.out.print(i+" ");
                 return result3;
             };
 
             final Supplier<Integer[]> intsSupplierRandom = () -> {
                 Integer [] result4 = (Integer[]) Array.newInstance(Integer.class, n);
                 for (int i = 0; i < n; i++) result4[i]=(int)(Math.random()*100);
-                //for (int i:result4) System.out.print(i+" ");
                 return result4;
             };
 
@@ -170,12 +163,7 @@ public class InsertionSort<X extends Comparable<X>> extends SortWithHelper<X> {
             ).runFromSupplier(intsSupplierRandom, 30);
 
             double meanTime=(timeForOrdered+timeForReversed+timeForPartial+timeForRandom)/4;
-// .append("Array Length(n),")
-//                .append("Ordered Array,")
-//                .append("Reverse Ordered Array,")
-//                .append("Partially Ordered Array,")
-//                .append("Random Array")
-//                .append("\n");
+
             output.append(t).append(",")
                     .append(n).append(",").
                     append(timeForOrdered).append(",")
@@ -188,8 +176,6 @@ public class InsertionSort<X extends Comparable<X>> extends SortWithHelper<X> {
             System.out.println("reversed "+timeForReversed);
             System.out.println("partial "+timeForPartial);
             System.out.println("random "+timeForRandom);
-
-
             System.out.println("mean time "+ meanTime);
 
 
@@ -206,11 +192,6 @@ public class InsertionSort<X extends Comparable<X>> extends SortWithHelper<X> {
 
 
     }
-
-
-
-
-
 
 
     public static final String DESCRIPTION = "Insertion sort";
