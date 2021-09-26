@@ -20,7 +20,8 @@ public class RandomWalk {
      * @param dy the distance he moves in the y direction
      */
     private void move(int dx, int dy) {
-        // TO BE IMPLEMENTED
+        x+=dx;
+        y+=dy;
     }
 
     /**
@@ -29,7 +30,10 @@ public class RandomWalk {
      * @param m the number of steps the drunkard takes
      */
     private void randomWalk(int m) {
-        // TO BE IMPLEMENTED
+        for(int i=0;i<m;i++)
+        {
+            this.randomMove();
+        }
     }
 
     /**
@@ -49,7 +53,8 @@ public class RandomWalk {
      */
     public double distance() {
         // TO BE IMPLEMENTED
-        return 0;
+        return (Math.sqrt((x)*(x) + (y)*(y)));
+
     }
 
     /**
@@ -72,11 +77,27 @@ public class RandomWalk {
     public static void main(String[] args) {
         if (args.length == 0)
             throw new RuntimeException("Syntax: RandomWalk steps [experiments]");
-        int m = Integer.parseInt(args[0]);
         int n = 30;
-        if (args.length > 1) n = Integer.parseInt(args[1]);
-        double meanDistance = randomWalkMulti(m, n);
-        System.out.println(m + " steps: " + meanDistance + " over " + n + " experiments");
+
+        // here the arguments contains a array of steps (n)
+        for(int t=0;t<args.length;t++)
+        {
+            int respositive=0,resnegative=0;
+            for(int t2=0;t2<n;t2++)
+            {
+
+                int m = Integer.parseInt(args[t]);
+                double meanDistance = randomWalkMulti(m, n);
+                System.out.println(m + " steps: " + meanDistance + " over " + n + " experiments");
+                if(meanDistance<Math.sqrt(m)) respositive+=1;
+                else resnegative+=1;
+            }
+            if(respositive>resnegative) System.out.println("Distacne (d) ≈ Sqrt(m)");
+            else System.out.println("No relation");
+
+            System.out.println();
+        }
+
     }
 
 }
